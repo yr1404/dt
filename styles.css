@@ -436,7 +436,7 @@ button:hover {
     position: absolute;
     border-radius: 20px;
     top: 100px;
-    right: -80px;
+    right: -100px;
     transition: transform 300ms ease;
     cursor: pointer;
 
@@ -459,3 +459,30 @@ button:hover {
 .hidden {
     visibility: hidden;
 }
+
+
+.button-container {
+    position: fixed;
+    bottom: 20px; 
+    right: 20px; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+  }
+  
+  .fixed-button {
+    width: 60px;
+    height: 60px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50%;
+    background-color: #0029FF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .fixed-icon {
+    width: 30px;
+  }
+  

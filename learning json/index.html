@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Assets</title>
+</head>
+<body>
+  <div id="assets-container"></div>
+
+  <script>
+    // Reusable Component for Asset
+    function renderAsset(asset) {
+      return `<div class="asset" id="${asset.assetID}">
+                <h3>${asset.name}</h3>
+                <p>Type: ${asset.type}</p>
+              </div>`;
+    }
+
+    // Function to render assets for a given task
+    function renderTaskAssets(taskID, projectData) {
+      const tasks = projectData.project.tasks;
+      const task = tasks.find(t => t.TaskID === taskID);
+
+      if (task) {
+        const assetsContainer = document.getElementById('assets-container');
+        assetsContainer.innerHTML = ''; // Clear previous assets if any
+
+        task.Assets.forEach(asset => {
+          assetsContainer.innerHTML += renderAsset(asset);
+        });
+      } else {
+        console.error('Task not found');
+      }
+    }
+
+    // Load JSON data from an external file and render the task assets
+    fetch('tasks.json')
+      .then(response => response.json())
+      .then(data => {
+        // Example: Render assets for TaskID 'task1'
+        renderTaskAssets('task1', data);
+      })
+      .catch(error => {
+        console.error('Error loading JSON data:', error);
+      });
+  </script>
+</body>
+</html>
